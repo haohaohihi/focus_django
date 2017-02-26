@@ -7,8 +7,6 @@ __pycache__/
 *.so
 
 # Distribution / packaging
-focus_env/
-migrations/
 .Python
 env/
 build/
@@ -97,4 +95,4 @@ ENV/
 
 .sqlite3
 .idea/
-将删除 db.sqlite3
+migrations/
