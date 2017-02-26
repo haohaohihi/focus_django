@@ -96,3 +96,5 @@ ENV/
 .ropeproject
 
 .sqlite3
+.idea/
+将删除 db.sqlite3
