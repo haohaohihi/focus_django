@@ -8,6 +8,7 @@ __pycache__/
 
 # Distribution / packaging
 focus_env/
+migrations/
 .Python
 env/
 build/
