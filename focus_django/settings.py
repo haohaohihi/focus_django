@@ -142,7 +142,7 @@ LOGGING = {
         'fail': {
             'level': 'DEBUG',
             'class': 'logging.FileHandler',
-            'filename': 'log/error.log',
+            'filename': 'log/errors.log',
             'formatter': 'default',
         },
     },
