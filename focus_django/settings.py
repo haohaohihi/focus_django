@@ -122,3 +122,40 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.10/howto/static-files/
 
 STATIC_URL = '/static/'
+
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'formatters': {
+        'default': {
+            'format': '[%(asctime)s]-[%(module)s]-[line:%(lineno)d]-[%(levelname)s]:%(message)s'
+        },
+    },
+    'handlers': {
+        'file': {
+            'level': 'DEBUG',
+            'class': 'logging.FileHandler',
+            'filename': 'log/focus.log',
+            'formatter': 'default',
+        },
+        'fail': {
+            'level': 'DEBUG',
+            'class': 'logging.FileHandler',
+            'filename': 'log/error.log',
+            'formatter': 'default',
+        },
+    },
+    'loggers': {
+        'django.request': {
+            'handlers': ['fail'],
+            'level': 'DEBUG',
+            'propagate': True,
+        },
+        'focus': {
+            'handlers': ['file'],
+            'level': 'DEBUG',
+            'propagate': True,
+        },
+    },
+}

@@ -96,3 +96,4 @@ ENV/
 .sqlite3
 .idea/
 migrations/
+log/
