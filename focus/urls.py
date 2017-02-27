@@ -8,6 +8,7 @@ urlpatterns = [
     url('^news/(?P<page>\d+)/$', views.news_page, name='news_page'),
     url('^design/(?P<page>\d+)/$', views.design_page, name='design_page'),
     url('^marketing/(?P<page>\d+)/$', views.marketing_page, name='marketing_page'),
+    url('^dev$', views.dev, name='dev'),
     url('^development/web/(?P<page>\d+)', views.dev_web_page, name='dev_web_page'),
     url('^development/python/(?P<page>\d+)', views.dev_python_page, name='dev_python_page'),
     url('^development/linux/(?P<page>\d+)', views.dev_linux_page, name='dev_linux_page'),

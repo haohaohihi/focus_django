@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Focus</title>
+</head>
+<body>
+<!-- top_area -->
+	<div class="top_area" id="top_area">
+		<div class="top">
+			<a class="logo_url" href="{% url 'index'%}"><img class="logo" src="/static/img/focus.png"></a>
+			<div class="menu">
+				<ul>
+					<li><a href="{% url 'index' %}">Products</a></li>
+					<li><a href="{% url 'news_page' '1' %}">News</a></li>
+					<li><a href="{% url 'design_page' '1' %}">Design</a></li>
+					<li><a href="{% url 'dev' %}">Development</a></li>
+					<li><a href="{% url 'marketing_page' '1' %}">Marketing</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<!-- content_area -->
+</body>
+</html>
