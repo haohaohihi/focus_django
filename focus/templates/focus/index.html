@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load staticfiles %}
+    {% load focus_extra %}
+    <meta charset="UTF-8">
+    <title>Focus</title>
+</head>
+<body>
+<!-- top_area -->
+	<div class="top_area" id="top_area">
+		<div class="top">
+			<a class="logo_url" href="{% url 'index'%}"><img class="logo" src="{% static 'focus/img/focus.png' %}"></a>
+			<div class="menu">
+				<ul>
+					<li><a class="products" href="{% url 'index' %}">Products</a></li>
+					<li><a class="news" href="{% url 'news_page' '1' %}">News</a></li>
+					<li><a class="design" href="{% url 'design_page' '1' %}">Design</a></li>
+					<li><a class="dev" href="{% url 'dev' %}">Development</a></li>
+					<li><a class="marketing" href="{% url 'marketing_page' '1' %}">Marketing</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<!-- content_area -->
+	<div class="content_area">
+		<ul>
+			{% for article in articles %}
+			<li class="content">
+				<a class="n_img_url" href="{{article.article_link}}" target="_blank"><img class="n_img" src="{{article.picture_link}}"></a>
+				<a class="n_title" href="{{article.article_link}}" target="_blank" title="{{article.article_title}}">{{article.article_title}}</a>
+				<p class="n_desc">{{article.article_desc}}</p>
+				<p class="n_date">{{article.article_date | strftime}}&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;From <span>{{article.article_source}}</span></p>
+			</li>
+			{% endfor %}
+		</ul>
+	</div>
+</body>
+</html>
