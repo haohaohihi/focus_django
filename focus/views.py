@@ -9,7 +9,7 @@ logger = logging.getLogger("focus")
 
 
 def index(request):
-    articles = ArticleModel.objects.filter(article_category="products").order_by('-article_date')
+    articles = ArticleModel.objects.filter(article_category="news").order_by('-article_date')
     paginator = Paginator(articles, 10)
     page = 1
     page_dict = {
@@ -22,7 +22,7 @@ def index(request):
     return render(request, 'focus/index.html', page_dict)
 
 
-def get_page(request, page=1, category="products", sub_category=""):
+def get_page(request, page=1, category="news", sub_category=""):
     articles = ArticleModel.objects.filter(article_category=category,
                                            article_sub_category=sub_category).order_by('-article_date')
     paginator = Paginator(articles, 10)
@@ -45,4 +45,5 @@ def get_page(request, page=1, category="products", sub_category=""):
         'category': category,
         'sub_category': sub_category,
     }
-    return render(request, 'focus/page.html'.format(category), page_dict)
+    logger.info('category: %s' %category)
+    return render(request, 'focus/{0}.html'.format(category), page_dict)

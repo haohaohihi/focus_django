@@ -1,8 +1,27 @@
+/**
+ * Created by haohao on 17-3-4.
+ */
+
 $(document).ready(function(){
-	var o1=$('.footer').offset().top;
-	var o2=$(document).height();
-	if (o2-o1>77) {
-		$('.footer').css('position','absolute');
-		$('.footer').css('bottom','0px');
-	};
+
+    $(".dropdown").hover(
+
+        function() {
+
+            $('.dropdown-menu', this).not('.in .dropdown-menu').stop( true, true ).slideDown("fast");
+
+            $(this).toggleClass('open');
+
+        },
+
+        function() {
+
+            $('.dropdown-menu', this).not('.in .dropdown-menu').stop( true, true ).slideUp("fast");
+
+            $(this).toggleClass('open');
+
+        }
+
+    );
+
 });
