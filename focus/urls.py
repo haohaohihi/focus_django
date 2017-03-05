@@ -8,7 +8,7 @@ urlpatterns = [
     url('^news/(?P<page>\d+)/$', views.get_page, {'category': 'news'}, name='news_page'),
     url('^design/(?P<page>\d+)/$', views.get_page, {'category': 'design'}, name='design_page'),
     url('^marketing/(?P<page>\d+)/$', views.get_page, {'category': 'marketing'}, name='marketing_page'),
-    url('^dev$', views.get_page, {'category': 'development'}, name='dev'),
+    url('^dev/(?P<page>\d+)/$', views.get_page, {'category': 'development'}, name='dev'),
     url('^dev/web/(?P<page>\d+)', views.get_page, {'category': 'development', 'sub_category': 'web'},
         name='dev_web_page'),
     url('^dev/python/(?P<page>\d+)', views.get_page, {'category': 'development', 'sub_category': 'python'},

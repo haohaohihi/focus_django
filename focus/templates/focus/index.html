@@ -33,24 +33,36 @@
 			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 
 				<ul class="nav navbar-nav navbar-right">
-					<li class="selected"><a href="news">资讯</a></li>
-{#					<li class="dropdown">#}
-{#						<a href="dev/1" class="dropdown-toggle" data-toggle="dropdown">Development</a>#}
-{#						<ul class="dropdown-menu">#}
-{#                            <li><a href="dev/1">头条（Top）</a></li>#}
-{#							<li><a href="web/1">前端（Web）</a></li>#}
-{#							<li><a href="python/1">后端（Python）</a></li>#}
-{#							<li><a href="linux/1">运维（Linux）</a></li>#}
-{#                            <li><a href="android/1">移动（Android）</a></li>#}
-{#                            <li><a href="db/1">数据库</a></li>#}
-{#							<li class="divider"></li>#}
-{#							<li><a href="#">Separated link</a></li>#}
-{#						</ul>#}
-{#					</li>#}
-                    <li class="basic"><a href="dev/1">开发</a></li>
-                    <li class="basic"><a href="products/1">产品</a></li>
-                    <li class="basic"><a href="design/1">设计</a></li>
-                    <li class="basic"><a href="marketing/1">市场营销</a></li>
+                    {% if category == "news" or not category %}
+                        <li class="selected"><a href="{% url 'news_page' 1 %}">资讯</a></li>
+                    {% else %}
+                        <li class="basic"><a href="{% url 'news_page' 1 %}">资讯</a></li>
+                    {% endif %}
+
+                    {% if category == "development" %}
+                        <<li class="selected"><a href="{% url 'dev' '1' %}">开发</a></li>
+                    {% else %}
+                        <li class="basic"><a href="{% url 'dev' '1' %}">开发</a></li>
+                    {% endif %}
+
+                    {% if category == "products" %}
+                        <li class="selected"><a href="{% url 'products_page' '1' %}">产品</a></li>
+                    {% else %}
+                        <li class="basic"><a href="{% url 'products_page' '1' %}">产品</a></li>
+                    {% endif %}
+
+                    {% if category == "design" %}
+                        <li class="selected"><a href="{% url 'design_page' '1' %}">设计</a></li>
+                    {% else %}
+                        <li class="basic"><a href="{% url 'design_page' '1' %}">设计</a></li>
+                    {% endif %}
+
+                    {% if category == "marketing" %}
+                        <li class="selected"><a href="{% url 'marketing_page' '1' %}">市场营销</a></li>
+                    {% else %}
+                        <li class="basic"><a href="{% url 'marketing_page' '1' %}">市场营销</a></li>
+                    {% endif %}
+
 {#                    <li class="collection"><a href="#">Login</a></li>#}
 {#                    <li class="dropdown"><a href="#">Login</a></li>#}
 				</ul>
@@ -80,9 +92,28 @@
     {% endfor %}
 
 <div class="page_area">
-        <a href="{% url 'news_page' pre_page %}">上一页</a>
-        <a class="page_num" href="" >{{page}}</a>
-        <a href="{% url 'news_page' next_page %}">下一页</a>
+        {% if category == "news" or not category%}
+            <a href="{% url 'news_page' pre_page %}">上一页</a>
+            <a class="page_num" href="" >{{page}}</a>
+            <a href="{% url 'news_page' next_page %}">下一页</a>
+        {% elif category == "development" %}
+            <a href="{% url 'dev' pre_page %}">上一页</a>
+            <a class="page_num" href="" >{{page}}</a>
+            <a href="{% url 'dev' next_page %}">下一页</a>
+        {% elif category == "products" %}
+            <a href="{% url 'products_page' pre_page %}">上一页</a>
+            <a class="page_num" href="" >{{page}}</a>
+            <a href="{% url 'products_page' next_page %}">下一页</a>
+        {% elif category == "design" %}
+            <a href="{% url 'design_page' pre_page %}">上一页</a>
+            <a class="page_num" href="" >{{page}}</a>
+            <a href="{% url 'design_page' next_page %}">下一页</a>
+        {% elif category == "marketing" %}
+            <a href="{% url 'marketing_page' pre_page %}">上一页</a>
+            <a class="page_num" href="" >{{page}}</a>
+            <a href="{% url 'marketing_page' next_page %}">下一页</a>
+        {% else %}
+        {% endif %}
     </div>
 </div>
 

@@ -19,14 +19,14 @@ def index(request):
         'page': page,
         'pages': paginator.num_pages,
     }
-    for a in articles:
-        logger.info('a: %s' % a.article_title)
     return render(request, 'focus/index.html', page_dict)
 
 
 def get_page(request, page=1, category="news", sub_category=""):
+    logger.info("category: %s; page: %s; sub_category: %s" % (category, page, sub_category))
     articles = ArticleModel.objects.filter(article_category=category,
                                            article_sub_category=sub_category).order_by('-article_date')
+    logger.info("articles num: %s" % len(articles))
     paginator = Paginator(articles, 10)
     page = int(page)
     if page == 1:
@@ -39,7 +39,7 @@ def get_page(request, page=1, category="news", sub_category=""):
         pre_page = page - 1
         next_page = page + 1
     page_dict = {
-        'articles': paginator.page(1),
+        'articles': paginator.page(page),
         'pre_page': pre_page,
         'next_page': next_page,
         'page': page,
@@ -47,5 +47,4 @@ def get_page(request, page=1, category="news", sub_category=""):
         'category': category,
         'sub_category': sub_category,
     }
-    logger.info('category: %s' %category)
-    return render(request, 'focus/{0}.html'.format(category), page_dict)
+    return render(request, 'focus/index.html'.format(category), page_dict)
