@@ -2,6 +2,7 @@
 <html lang="zh-CN">
 <head>
     {% load static %}
+    {% load focus_extra %}
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -32,7 +33,7 @@
 			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 
 				<ul class="nav navbar-nav navbar-right">
-					<li class="selected"><a href="news">News</a></li>
+					<li class="selected"><a href="news">资讯</a></li>
 {#					<li class="dropdown">#}
 {#						<a href="dev/1" class="dropdown-toggle" data-toggle="dropdown">Development</a>#}
 {#						<ul class="dropdown-menu">#}
@@ -46,10 +47,11 @@
 {#							<li><a href="#">Separated link</a></li>#}
 {#						</ul>#}
 {#					</li>#}
-                    <li class="basic"><a href="dev/1">Development</a></li>
-                    <li class="basic"><a href="products/1">Products</a></li>
-                    <li class="basic"><a href="design/1">Design</a></li>
-                    <li class="basic"><a href="marketing/1">Marketing</a></li>
+                    <li class="basic"><a href="dev/1">开发</a></li>
+                    <li class="basic"><a href="products/1">产品</a></li>
+                    <li class="basic"><a href="design/1">设计</a></li>
+                    <li class="basic"><a href="marketing/1">市场营销</a></li>
+{#                    <li class="collection"><a href="#">Login</a></li>#}
 {#                    <li class="dropdown"><a href="#">Login</a></li>#}
 				</ul>
 
@@ -59,6 +61,32 @@
 
 </header>
 
+<div class="content_area container">
+    {% for article in articles %}
+        <div class="media">
+             <div class="media-left media-heading">
+                <a href="{{ article.article_link }}">
+                  <img class="media-object" src="{{ article.picture_link }}">
+                </a>
+              </div>
+              <div class="media-body">
+                  <h4 class="article_title"><a href="{{ article.article_link }}">{{ article.article_title }}</a></h4>
+                  <div class="article_desc"><a href="{{ article.article_link }}">{{ article.article_desc }}</a></div>
+                  <div class="article_info">{{ article.article_date | strftime }}&nbsp;&nbsp;|&nbsp;&nbsp;From:
+                      <a href="{{ article.article_link }}">{{ article.article_source }}</a>
+                  </div>
+              </div>
+        </div>
+    {% endfor %}
+
+<div class="page_area">
+        <a href="{% url 'news_page' pre_page %}">上一页</a>
+        <a class="page_num" href="" >{{page}}</a>
+        <a href="{% url 'news_page' next_page %}">下一页</a>
+    </div>
+</div>
+
+</div>
 <script src="{% static 'focus/js/jquery-3.1.1.min.js' %}"></script>
 <script src="{% static 'focus/js/index.js' %}"></script>
 <script src="{% static 'focus/js/bootstrap.min.js' %}"></script>

@@ -19,6 +19,8 @@ def index(request):
         'page': page,
         'pages': paginator.num_pages,
     }
+    for a in articles:
+        logger.info('a: %s' % a.article_title)
     return render(request, 'focus/index.html', page_dict)
 
 
