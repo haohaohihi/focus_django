@@ -42,7 +42,7 @@
                     {% if category == "development" %}
                         <<li class="selected"><a href="{% url 'dev' '1' %}">开发</a></li>
                     {% else %}
-                        <li class="basic"><a href="{% url 'dev' '1' %}">开发</a></li>
+                        <li class="dropdown"><a href="{% url 'dev' '1' %}">开发</a></li>
                     {% endif %}
 
                     {% if category == "products" %}

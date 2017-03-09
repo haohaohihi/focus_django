@@ -27,7 +27,8 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['10.202.2.208',
                  '127.0.0.1',
-                 '10.128.32.5'
+                 '10.128.32.5',
+                 '10.202.2.203'
                  ]
 
 
@@ -83,7 +84,8 @@ DATABASES = {
         'HOST': 'localhost',
         'NAME': 'focus',
         'USER': 'focus',
-        'PASSWORD': '657481',
+        'PASSWORD': 'focus',
+      
     }
 }
 
