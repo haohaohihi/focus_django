@@ -2,7 +2,6 @@
 <html lang="zh-CN">
 <head>
     {% load static %}
-    {% load focus_extra %}
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -13,108 +12,10 @@
     <link rel="shortcut icon" type="image/png" href="{% static 'focus/img/favicon.ico' %}"/>
 </head>
 <body>
-
-<header>
-<!--top_bar-->
-<nav class="navbar navbar-default" role="navigation">
-    	<div class="container">
-			<!-- Brand and toggle get grouped for better mobile display -->
-			<div class="navbar-header">
-				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-					<span class="sr-only">Toggle navigation</span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-				</button>
-				<a class="navbar-brand" href="#"><img height="50px" src="{% static 'focus/img/focus.cn.png' %}"></a>
-			</div>
-
-			<!-- Collect the nav links, forms, and other content for toggling -->
-			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-
-				<ul class="nav navbar-nav navbar-right">
-                    {% if category == "news" or not category %}
-                        <li class="selected"><a href="{% url 'news_page' 1 %}">资讯</a></li>
-                    {% else %}
-                        <li class="basic"><a href="{% url 'news_page' 1 %}">资讯</a></li>
-                    {% endif %}
-
-                    {% if category == "development" %}
-                        <li class="selected"><a href="{% url 'dev' '1' %}">开发</a></li>
-                    {% else %}
-                        <li class="dropdown"><a href="{% url 'dev' '1' %}">开发</a></li>
-                    {% endif %}
-
-                    {% if category == "products" %}
-                        <li class="selected"><a href="{% url 'products_page' '1' %}">产品</a></li>
-                    {% else %}
-                        <li class="basic"><a href="{% url 'products_page' '1' %}">产品</a></li>
-                    {% endif %}
-
-                    {% if category == "design" %}
-                        <li class="selected"><a href="{% url 'design_page' '1' %}">设计</a></li>
-                    {% else %}
-                        <li class="basic"><a href="{% url 'design_page' '1' %}">设计</a></li>
-                    {% endif %}
-
-                    {% if category == "marketing" %}
-                        <li class="selected"><a href="{% url 'marketing_page' '1' %}">市场营销</a></li>
-                    {% else %}
-                        <li class="basic"><a href="{% url 'marketing_page' '1' %}">市场营销</a></li>
-                    {% endif %}
-
-{#                    <li class="collection"><a href="#">Login</a></li>#}
-{#                    <li class="dropdown"><a href="#">Login</a></li>#}
-				</ul>
-
-			</div><!-- /.navbar-collapse -->
-		</div><!-- /.container-fluid -->
-	</nav>
-
-</header>
-
+{% include 'focus/top_bar.html' %}
 <div class="content_area container">
-    {% for article in articles %}
-        <div class="media">
-             <div class="media-left media-heading">
-                <a href="{{ article.article_link }}">
-                  <img class="media-object" src="{{ article.picture_link }}">
-                </a>
-              </div>
-              <div class="media-body">
-                  <h4 class="article_title"><a href="{{ article.article_link }}">{{ article.article_title }}</a></h4>
-                  <div class="article_desc"><a href="{{ article.article_link }}">{{ article.article_desc }}</a></div>
-                  <div class="article_info">{{ article.article_date | strftime }}&nbsp;&nbsp;|&nbsp;&nbsp;From:
-                      <a href="{{ article.article_link }}">{{ article.article_source }}</a>
-                  </div>
-              </div>
-        </div>
-    {% endfor %}
-
-<div class="page_area">
-        {% if category == "news" or not category%}
-            <a href="{% url 'news_page' pre_page %}">上一页</a>
-            <a class="page_num" href="" >{{page}}</a>
-            <a href="{% url 'news_page' next_page %}">下一页</a>
-        {% elif category == "development" %}
-            <a href="{% url 'dev' pre_page %}">上一页</a>
-            <a class="page_num" href="" >{{page}}</a>
-            <a href="{% url 'dev' next_page %}">下一页</a>
-        {% elif category == "products" %}
-            <a href="{% url 'products_page' pre_page %}">上一页</a>
-            <a class="page_num" href="" >{{page}}</a>
-            <a href="{% url 'products_page' next_page %}">下一页</a>
-        {% elif category == "design" %}
-            <a href="{% url 'design_page' pre_page %}">上一页</a>
-            <a class="page_num" href="" >{{page}}</a>
-            <a href="{% url 'design_page' next_page %}">下一页</a>
-        {% elif category == "marketing" %}
-            <a href="{% url 'marketing_page' pre_page %}">上一页</a>
-            <a class="page_num" href="" >{{page}}</a>
-            <a href="{% url 'marketing_page' next_page %}">下一页</a>
-        {% else %}
-        {% endif %}
-    </div>
+{% include 'focus/article_list.html' %}
+{% include 'focus/page_area.html' %}
 </div>
 
 <script src="{% static 'focus/js/jquery-3.1.1.min.js' %}"></script>

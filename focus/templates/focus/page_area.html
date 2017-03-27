@@ -1,0 +1,24 @@
+<div class="page_area">
+        {% if category == "news" or not category%}
+            <a href="{% url 'news_page' pre_page %}">上一页</a>
+            <a class="page_num" href="" >{{page}}</a>
+            <a href="{% url 'news_page' next_page %}">下一页</a>
+        {% elif category == "development" %}
+            <a href="{% url 'dev' pre_page %}">上一页</a>
+            <a class="page_num" href="" >{{page}}</a>
+            <a href="{% url 'dev' next_page %}">下一页</a>
+        {% elif category == "products" %}
+            <a href="{% url 'products_page' pre_page %}">上一页</a>
+            <a class="page_num" href="" >{{page}}</a>
+            <a href="{% url 'products_page' next_page %}">下一页</a>
+        {% elif category == "design" %}
+            <a href="{% url 'design_page' pre_page %}">上一页</a>
+            <a class="page_num" href="" >{{page}}</a>
+            <a href="{% url 'design_page' next_page %}">下一页</a>
+        {% elif category == "marketing" %}
+            <a href="{% url 'marketing_page' pre_page %}">上一页</a>
+            <a class="page_num" href="" >{{page}}</a>
+            <a href="{% url 'marketing_page' next_page %}">下一页</a>
+        {% else %}
+        {% endif %}
+    </div>

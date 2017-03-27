@@ -1,0 +1,63 @@
+<header>
+<!--top_bar-->
+{% load static %}
+<nav class="navbar navbar-default" role="navigation">
+    	<div class="container">
+			<!-- Brand and toggle get grouped for better mobile display -->
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="#"><img height="50px" src="{% static 'focus/img/focus.cn.png' %}"></a>
+			</div>
+
+			<!-- Collect the nav links, forms, and other content for toggling -->
+			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+
+				<ul class="nav navbar-nav navbar-right">
+                    {% if category == "news" or not category %}
+                        <li class="selected"><a href="{% url 'news_page' 1 %}">资讯</a></li>
+                    {% else %}
+                        <li class="basic"><a href="{% url 'news_page' 1 %}">资讯</a></li>
+                    {% endif %}
+
+                    {% if category == "development" %}
+                        <li class="selected"><a href="{% url 'dev' '1' %}">开发</a></li>
+                    {% else %}
+                        <li class="dropdown"><a href="{% url 'dev' '1' %}">开发</a></li>
+                    {% endif %}
+
+                    {% if category == "products" %}
+                        <li class="selected"><a href="{% url 'products_page' '1' %}">产品</a></li>
+                    {% else %}
+                        <li class="basic"><a href="{% url 'products_page' '1' %}">产品</a></li>
+                    {% endif %}
+
+                    {% if category == "design" %}
+                        <li class="selected"><a href="{% url 'design_page' '1' %}">设计</a></li>
+                    {% else %}
+                        <li class="basic"><a href="{% url 'design_page' '1' %}">设计</a></li>
+                    {% endif %}
+
+                    {% if category == "marketing" %}
+                        <li class="selected"><a href="{% url 'marketing_page' '1' %}">市场营销</a></li>
+                    {% else %}
+                        <li class="basic"><a href="{% url 'marketing_page' '1' %}">市场营销</a></li>
+                    {% endif %}
+
+                    {% if request.user.is_authenticated %}
+                        <li class="basic"><a href="{% url 'marketing_page' '1' %}">我的收藏</a></li>
+                    {% else %}
+                        <li class="basic"><a href="{% url 'marketing_page' '1' %}">Login</a></li>
+                    {% endif %}
+{#                    <li class="collection"><a href="#">Login</a></li>#}
+{#                    <li class="dropdown"><a href="#">Login</a></li>#}
+				</ul>
+
+			</div><!-- /.navbar-collapse -->
+		</div><!-- /.container-fluid -->
+	</nav>
+</header>
