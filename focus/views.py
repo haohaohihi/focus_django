@@ -48,3 +48,15 @@ def get_page(request, page=1, category="news", sub_category=""):
         'sub_category': sub_category,
     }
     return render(request, 'focus/index.html'.format(category), page_dict)
+
+
+def login_page(request):
+    return render(request, 'focus/login_page.html')
+
+
+def login(request):
+    pass
+
+
+def register(request):
+    pass

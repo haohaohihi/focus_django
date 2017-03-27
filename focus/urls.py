@@ -19,4 +19,7 @@ urlpatterns = [
         name='dev_db_page'),
     url('^dev/android/(?P<page>\d+)', views.get_page, {'category': 'development', 'sub_category': 'android'},
         name='dev_android_page'),
+    url('^login_page', views.login_page, name='login_page'),
+    url('^login$', views.login, name='login'),
+    url('^register', views.register, name='register'),
 ]

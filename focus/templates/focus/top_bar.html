@@ -51,7 +51,7 @@
                     {% if request.user.is_authenticated %}
                         <li class="basic"><a href="{% url 'marketing_page' '1' %}">我的收藏</a></li>
                     {% else %}
-                        <li class="basic"><a href="{% url 'marketing_page' '1' %}">Login</a></li>
+                        <li class="basic"><a href="{% url 'login_page' %}">Login</a></li>
                     {% endif %}
 {#                    <li class="collection"><a href="#">Login</a></li>#}
 {#                    <li class="dropdown"><a href="#">Login</a></li>#}
