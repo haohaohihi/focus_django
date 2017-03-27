@@ -1,6 +1,9 @@
 import logging
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
+from django.contrib.auth.models import User
+from django.views.decorators.csrf import csrf_exempt
+from django.contrib.auth import authenticate, login
 from django.core.paginator import Paginator
 from .models import ArticleModel
 # Create your views here.
@@ -54,9 +57,24 @@ def login_page(request):
     return render(request, 'focus/login_page.html')
 
 
-def login(request):
-    pass
+@csrf_exempt
+def do_login(request):
+    username = str(request.POST.get("username"))
+    password = str(request.POST.get("password"))
+    logger.info("username: %s" % username)
+    logger.info("password: %s" % password)
+    user = authenticate(username=username, password=password)
+    if user is not None:
+        login(request, user)
+        return HttpResponseRedirect('/')
 
 
+@csrf_exempt
 def register(request):
-    pass
+    username = request.POST.get("username")
+    email = request.POST.get("email")
+    password = request.POST.get("password")
+    confirm_password = request.POST.get("confirm-password")
+    user = User.objects.create_user(username=username, email=email, password=password)
+    return HttpResponseRedirect('/')
+
