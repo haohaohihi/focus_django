@@ -11,7 +11,8 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="#"><img height="50px" src="{% static 'focus/img/focus.cn.png' %}"></a>
+                <a class="visible-xs" href="{% url 'index' %}"><span class="glyphicon glyphicon-home" aria-hidden="true"></span></a>
+				<a class="navbar-brand hidden-xs" href="{% url 'index' %}"><img height="50px" src="{% static 'focus/img/focus.cn.png' %}"></a>
 			</div>
 
 			<!-- Collect the nav links, forms, and other content for toggling -->
@@ -53,8 +54,8 @@
                     {% else %}
                         <li class="basic"><a href="{% url 'login_page' %}">Login</a></li>
                     {% endif %}
-{#                    <li class="collection"><a href="#">Login</a></li>#}
-{#                    <li class="dropdown"><a href="#">Login</a></li>#}
+<!-- {#                    <li class="collection"><a href="#">Login</a></li>#}
+{#                    <li class="dropdown"><a href="#">Login</a></li>#} -->
 				</ul>
 
 			</div><!-- /.navbar-collapse -->

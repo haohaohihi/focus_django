@@ -16,6 +16,7 @@ def index(request):
     paginator = Paginator(articles, 10)
     page = 1
     page_dict = {
+        'category': 'news',
         'articles': paginator.page(1),
         'pre_page': page,
         'next_page': page + 1,

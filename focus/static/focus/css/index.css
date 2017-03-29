@@ -16,6 +16,22 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#30bed6', end
 .navbar-brand img { margin-top:0px; margin-left:0px;}
 .navbar-brand {padding:0px;}
 
+
+.glyphicon.glyphicon-home{
+  float: left;
+  padding: 6px 14px;
+  margin-top: 10px;
+  margin-right: 1px;
+  margin-left: 6px;
+  margin-bottom: 10px;
+  background-color: transparent;
+}
+.navbar-toggle{
+	float: left;
+	margin-left: 10px;
+	margin-right: 5px;
+}
+
 .nav.navbar-nav.navbar-right span {font-family: 'Open Sans', sans-serif; font-style:italic; font-weight:300; color:#1b6977;}
 .navbar-right li a {font-family: 'Open Sans', sans-serif; font-size:16px; color:#1b6977 !important;}
 
