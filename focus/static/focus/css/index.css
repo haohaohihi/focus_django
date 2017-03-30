@@ -100,6 +100,11 @@
     width: 4%;
 }
 
+.nav.navbar-nav li a{
+    margin-right: 20px;
+    font-size: larger;
+    font-weight: 700;
+}
 #user {
     position: relative;
     display: inline;
@@ -132,7 +137,7 @@
 }
 
 #user .dropdown-menu a{
-    font-size: 16px;
+    font-size: larger;
     font-weight: 600;
 }
 @media (min-width: 767px) {
