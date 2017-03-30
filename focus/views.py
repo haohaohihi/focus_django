@@ -16,7 +16,7 @@ def index(request):
     paginator = Paginator(articles, 10)
     page = 1
     page_dict = {
-        'category': 'news',
+
         'articles': paginator.page(1),
         'pre_page': page,
         'next_page': page + 1,
@@ -28,8 +28,11 @@ def index(request):
 
 def get_page(request, page=1, category="news", sub_category=""):
     logger.info("category: %s; page: %s; sub_category: %s" % (category, page, sub_category))
-    articles = ArticleModel.objects.filter(article_category=category,
+    if sub_category != "":
+        articles = ArticleModel.objects.filter(article_category=category,
                                            article_sub_category=sub_category).order_by('-article_date')
+    else:
+        articles = ArticleModel.objects.filter(article_category=category).order_by('-article_date')
     logger.info("articles num: %s" % len(articles))
     paginator = Paginator(articles, 10)
     page = int(page)

@@ -6,11 +6,35 @@
 <li>
     <a href="#" class="dropdown-toggle" data-toggle="dropdown"> 技术 <b class="caret"></b></a>
     <ul class="dropdown-menu">
-        <li><a href="#"> 后端（Python） </a></li>
-        <li><a href="#"> 前端（Web） </a></li>
-        <li><a href="#"> 移动（Android） </a></li>
-        <li><a href="#"> 运维（Linux） </a></li>
-        <li><a href="#"> 数据库 </a></li>
+        {% if sub_category == "python"%}
+        <li class="active"><a href="{% url 'dev_python_page' '1' %}"> 后端（Python） </a></li>
+        {% else %}
+        <li class="not-active"><a href="{% url 'dev_python_page' '1' %}"> 后端（Python） </a></li>
+        {% endif %}
+
+        {% if sub_category == "web"%}
+        <li class="active"><a href="{% url 'dev_web_page' '1' %}"> 前端（Web） </a></li>
+        {% else %}
+        <li class="not-active"><a href="{% url 'dev_web_page' '1' %}"> 前端（Web） </a></li>
+        {% endif %}
+
+        {% if sub_category == "android"%}
+        <li class="active"><a href="{% url 'dev_android_page' '1' %}"> 移动（Android） </a></li>
+        {% else %}
+        <li class="not-active"><a href="{% url 'dev_android_page' '1' %}"> 移动（Android） </a></li>
+        {% endif %}
+
+        {% if sub_category == "linux"%}
+        <li class="active"><a href="{% url 'dev_linux_page' '1' %}"> 运维（Linux） </a></li>
+        {% else %}
+        <li class="not-active"><a href="{% url 'dev_linux_page' '1' %}"> 运维（Linux） </a></li>
+        {% endif %}
+
+        {% if sub_category == "db"%}
+        <li class="active"><a href="{% url 'dev_db_page' '1' %}"> 数据库 </a></li>
+        {% else %}
+        <li class="not-active"><a href="{% url 'dev_db_page' '1' %}"> 数据库 </a></li>
+        {% endif %}
     </ul>
 </li>
 
