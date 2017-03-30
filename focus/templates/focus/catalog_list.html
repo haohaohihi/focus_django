@@ -3,8 +3,14 @@
 {% else %}
     <li class="not-active"><a href="{% url 'news_page' '1' %}"> 资讯 </a></li>
 {% endif %}
+
 <li>
+    {% if category == "development" %}
+    <a href="#" id="active-tech" class="dropdown-toggle" data-toggle="dropdown"> 技术 <b class="caret"></b></a>
+    {% else %}
     <a href="#" class="dropdown-toggle" data-toggle="dropdown"> 技术 <b class="caret"></b></a>
+    {% endif %}
+
     <ul class="dropdown-menu">
         {% if sub_category == "python"%}
         <li class="active"><a href="{% url 'dev_python_page' '1' %}"> 后端（Python） </a></li>

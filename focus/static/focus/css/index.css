@@ -105,6 +105,12 @@
     font-size: larger;
     font-weight: 700;
 }
+
+a#active-tech{
+    background-color: rgb(231, 231, 231);
+    box-shadow: inset 0 3px 9px rgba(0,0,0,.075);
+}
+
 #user {
     position: relative;
     display: inline;
@@ -193,6 +199,10 @@
     color: #EA6363;
 }
 
+img.media-object{
+    width: 190px;
+    height: 150px;
+}
 .content_area .media-body div.article_desc {
     width: 650px;
     height: 88px;
