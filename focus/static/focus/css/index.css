@@ -17,7 +17,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#30bed6', end
 .navbar-brand {padding:0px;}
 
 
-.glyphicon.glyphicon-home{
+.glyphicon-home{
   float: left;
   padding: 6px 14px;
   margin-top: 10px;
@@ -26,14 +26,60 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#30bed6', end
   margin-bottom: 10px;
   background-color: transparent;
 }
+
+
+#bs-example-navbar-collapse-1{
+    float: left;
+	margin-left: 6%;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+#user{
+  display: block;
+  float: right;
+  padding: 6px 14px;
+  margin: 10px auto;
+  background-color: transparent;
+}
+
+#user .dropdown-toggle, .glyphicon .glyphicon-log-in{
+    margin-right: 1px;
+}
+#user .dropdown-toggle, .glyphicon .glyphicon-log-in a{
+  font-family: 'Open Sans', sans-serif;
+  font-size: 16px;
+  color: #1b6977 !important;
+  margin-left: 1px;
+  text-decoration: none;
+}
+
+/*#user:hover{*/
+    /*background-color: #5bc0de;*/
+    /*border-radius: 5px;*/
+/*}*/
+
+#user .dropdown-menu{
+    left: -140%;
+    position: absolute;
+    margin-top: 0;
+    padding-right: 0px;
+    margin-right: 0px;
+    border-right: 0px;
+}
+
 .navbar-toggle{
 	float: left;
 	margin-left: 10px;
 	margin-right: 5px;
 }
 
-.nav.navbar-nav.navbar-right span {font-family: 'Open Sans', sans-serif; font-style:italic; font-weight:300; color:#1b6977;}
-.navbar-right li a {font-family: 'Open Sans', sans-serif; font-size:16px; color:#1b6977 !important;}
+
+.navbar-right li a {
+	font-family: 'Open Sans', sans-serif;
+	font-size: 16px;
+	color: #1b6977 !important;
+}
 
 .nav.navbar-nav.navbar-right{
     margin-top: 6px;
@@ -41,18 +87,14 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#30bed6', end
     padding: 1px;
 }
 .nav.navbar-nav.navbar-right > li{
-	display: block;
-	width: 130px;
-	/*height: 200px;*/
-	/*text-decoration: none;*/
+	display: inline;
+	width: 100px;
 	color: #666666;
 	font-weight: 700;
 	text-align: center;
 	border-radius: 5px;
-    /*background-color: #5bc0de;*/
     margin-left: 1px;
     margin-right: 1px;
-    /*padding: 0px;*/
 }
 .nav.navbar-nav.navbar-right li>a{
     margin: 0px;

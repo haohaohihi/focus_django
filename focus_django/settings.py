@@ -25,10 +25,9 @@ SECRET_KEY = 'v&av2c$a$p(u3&aeryi*t6-%=es$2sn)2!tto$#+i!b7(zag_w'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['10.202.2.208',
+ALLOWED_HOSTS = ['10.202.2.212',
                  '127.0.0.1',
-                 '10.128.32.5',
-                 '10.202.2.203'
+                 '10.128.32.151'
                  ]
 
 
@@ -84,7 +83,7 @@ DATABASES = {
         'HOST': 'localhost',
         'NAME': 'focus',
         'USER': 'focus',
-        'PASSWORD': 'focus',
+        'PASSWORD': '657481',
       
     }
 }
