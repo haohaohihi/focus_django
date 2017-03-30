@@ -1,63 +1,42 @@
-<header>
-    <!--top_bar-->
-    {% load static %}
-    <nav class="navbar navbar-default" role="navigation">
-        <div class="container">
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse"
-                        data-target="#bs-example-navbar-collapse-1">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="visible-xs" href="{% url 'index' %}"><span class="glyphicon glyphicon-home"
-                                                                     aria-hidden="true"></span></a>
-                <a class="navbar-brand hidden-xs" href="{% url 'index' %}"><img height="50px"
-                                                                                src="{% static 'focus/img/focus.cn.png' %}"></a>
-                <div class="visible-xs" id="user">
-                    {% include 'focus/login_collection_module.html' %}
-                </div>
+<style>
+    body {
+        padding-top: 50px;
+    }
+
+    .navbar-template {
+        padding: 40px 15px;
+    }
+</style>
+{% load static %}
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="visible-xs" href="{% url 'index' %}"><span class="glyphicon glyphicon-home"
+                                                                 aria-hidden="true"></span></a>
+            <a class="navbar-brand hidden-xs" href="{% url 'index' %}"><img height="50px"
+                                                                            src="{% static 'focus/img/focus.cn.png' %}"></a>
+            <div class="visible-xs" id="user">
+            {% include 'focus/login_collection_module.html' %}
             </div>
+        </div>
 
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav navbar-right">
-                    {% if category == "news" or not category %}
-                        <li class="selected"><a href="{% url 'news_page' 1 %}">资讯</a></li>
-                    {% else %}
-                        <li class="basic"><a href="{% url 'news_page' 1 %}">资讯</a></li>
-                    {% endif %}
+        <div id="added-blank" class="hidden-xs"><a>&nbsp;</a>
+        </div>
 
-                    {% if category == "development" %}
-                        <li class="selected"><a href="{% url 'dev' '1' %}">开发</a></li>
-                    {% else %}
-                        <li class="dropdown"><a href="{% url 'dev' '1' %}">开发</a></li>
-                    {% endif %}
-
-                    {% if category == "products" %}
-                        <li class="selected"><a href="{% url 'products_page' '1' %}">产品</a></li>
-                    {% else %}
-                        <li class="basic"><a href="{% url 'products_page' '1' %}">产品</a></li>
-                    {% endif %}
-
-                    {% if category == "design" %}
-                        <li class="selected"><a href="{% url 'design_page' '1' %}">设计</a></li>
-                    {% else %}
-                        <li class="basic"><a href="{% url 'design_page' '1' %}">设计</a></li>
-                    {% endif %}
-
-                    {% if category == "marketing" %}
-                        <li class="selected"><a href="{% url 'marketing_page' '1' %}">市场营销</a></li>
-                    {% else %}
-                        <li class="basic"><a href="{% url 'marketing_page' '1' %}">市场营销</a></li>
-                    {% endif %}
-                </ul>
-            </div><!-- /.navbar-collapse -->
+        <div class="collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+                {% include 'focus/catalog_list.html' %}
+            </ul>
             <div class="hidden-xs" id="user">
-                {% include 'focus/login_collection_module.html' %}
+            {% include 'focus/login_collection_module.html' %}
             </div>
-        </div><!-- /.container-fluid -->
-    </nav>
-</header>
+        </div><!--/.nav-collapse -->
+
+    </div>
+</div>

@@ -1,0 +1,33 @@
+{% if category == "news" or not category %}
+    <li class="active"><a href="{% url 'news_page' '1' %}">资讯</a></li>
+{% else %}
+    <li class="not-active"><a href="{% url 'news_page' '1' %}">资讯</a></li>
+{% endif %}
+<li>
+    <a href="#" class="dropdown-toggle" data-toggle="dropdown">技术<b class="caret"></b></a>
+    <ul class="dropdown-menu">
+        <li><a href="#">后端（Python）</a></li>
+        <li><a href="#">前端（Web）</a></li>
+        <li><a href="#">移动（Android）</a></li>
+        <li><a href="#">运维（Linux）</a></li>
+        <li><a href="#">数据库</a></li>
+    </ul>
+</li>
+
+{% if category == "products" %}
+    <li class="active"><a href="{% url 'products_page' '1' %}">产品</a></li>
+{% else %}
+    <li class="not-active"><a href="{% url 'products_page' '1' %}">产品</a></li>
+{% endif %}
+
+{% if category == "design" %}
+    <li class="active"><a href="{% url 'design_page' '1' %}">设计</a></li>
+{% else %}
+    <li class="not-active"><a href="{% url 'design_page' '1' %}">设计</a></li>
+{% endif %}
+
+{% if category == "marketing" %}
+    <li class="active"><a href="{% url 'marketing_page' '1' %}">营销</a></li>
+{% else %}
+    <li class="not-active"><a href="{% url 'marketing_page' '1' %}">营销</a></li>
+{% endif %}
