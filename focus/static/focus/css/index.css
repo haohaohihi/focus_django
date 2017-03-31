@@ -98,6 +98,7 @@
     margin-left: 2%;
     margin-right: 2%;
     width: 4%;
+    visibility:hidden;
 }
 
 .nav.navbar-nav li a{
@@ -152,85 +153,55 @@ a#active-tech{
     }
 }
 
-/*content_area*/
-.content_area {
-    width: 900px;
-    margin: 0 auto;
-    /*margin-top: 80px;*/
-    padding-top: 30px;
-    padding-right: 0px;
-}
 
-.content_area .media {
-    width: 100%;
-    height: 180px;
-    border-top: 0px dotted #EEEEEE;
-    border-bottom: 0px dotted #EEEEEE;
-    list-style: none;
+.media.hidden-xs{
     position: relative;
+    width: 70%;
+    height: 10%;
+    margin: 2% auto;
 }
 
-.content_area .media .media-left .media-heading img.media-object {
-    display: block;
-    width: 202px;
+.media.hidden-xs .media-left.media-heading img{
+    width: 200px;
     height: 150px;
-    float: left;
-    margin-top: 10px;
-    margin-left: 6px;
-    outline: none;
 }
 
-.content_area .media-body h4 a {
-    display: block;
-    width: 650px;
-    line-height: 18px;
-    max-height: 36px;
+.media.hidden-xs .media-body{
+    width: 72%;
+    height: 100%;
+}
+
+.media.hidden-xs .media-body .article_title a{
     text-decoration: none;
     color: #333333;
     font-weight: 700;
-    margin-left: 10px;
-    margin-top: 5px;
-    font-size: 16px;
-    overflow: hidden;
-    outline: none;
 }
 
-.content_area .media-object h4 a {
-    color: #EA6363;
-}
-
-img.media-object{
-    width: 190px;
-    height: 150px;
-}
-.content_area .media-body div.article_desc {
-    width: 650px;
-    height: 88px;
-    margin-top: 8px;
-    margin-left: 10px;
-    color: #777777;
-    font-size: 14px;
-    line-height: 22px;
-    overflow: hidden;
-}
-
-.content_area .media-body div.article_desc a {
-    color: #777777;
-}
-
-.content_area .media-body div.article_info {
-    color: #777777;
+.media.hidden-xs .media-body .article_desc a{
+    text-decoration: none;
+    color: #333333;
     font-size: 15px;
-    height: 20px;
-    /*line-height: 20px;*/
-    position: relative;
-    left: 10px;
-    bottom: 4px;
 }
 
-.content_area .media-body div.article_info > a {
-    color: #5bc0de;
-    font-size: 15px;
+.media.hidden-xs .media-body .article_title{
+    margin-top: 0.2%;
+}
+
+.media.hidden-xs .media-body .article_info{
+    position: absolute;
+    bottom: 0.2%;
+}
+
+.media.hidden-xs .media-body .article_info .article_date,.static_from{
+    text-decoration: none;
+    color: #333333;
+    font-weight: 500;
+}
+
+.media.hidden-xs .media-body .article_info .article_source{
+    text-decoration: none;
+    color: #2e6da4;
+    font-weight: 500;
 }
 
 .content_area .page_area {
