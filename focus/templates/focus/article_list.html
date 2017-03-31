@@ -1,35 +1,36 @@
 {% load focus_extra %}
 {% for article in articles %}
     <div class="media hidden-xs">
-         <div class="media-left media-heading">
+        <div class="media-left media-heading">
             <a href="{{ article.article_link }}">
-              <img class="media-object" src="{{ article.picture_link }}">
+                <img class="media-object" src="{{ article.picture_link }}">
             </a>
-          </div>
-          <div class="media-body">
-              <h4 class="article_title"><a href="{{ article.article_link }}">{{ article.article_title }}</a></h4>
-              <div class="article_info">
-                  <a class="article_date">{{ article.article_date | strftime }}</a>
-                  <a class="static_from"> | From:</a>
-                  <a class="article_source" href="{{ article.article_link }}">{{ article.article_source }}</a>
-              </div>
-              <div class="article_desc"><a href="{{ article.article_link }}">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ article.article_desc }}</a></div>
-
-          </div>
+        </div>
+        <div class="media-body">
+            <h4 class="article_title"><a href="{{ article.article_link }}">{{ article.article_title }}</a></h4>
+            <div class="article_desc"><a href="{{ article.article_link }}">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ article.article_desc }}</a>
+            </div>
+            <div class="article_info">
+                <a class="article_date">{{ article.article_date | strftime }}</a>
+                <a class="static_from"> | From:</a>
+                <a class="article_source" href="{{ article.article_link }}">{{ article.article_source }}</a>
+            </div>
+        </div>
     </div>
 
-       <div class="media visible-xs">
-         <div class="media-left media-heading">
+    <div class="media visible-xs">
+        <div class="media-left media-heading">
             <a href="{{ article.article_link }}">
-              <img class="media-object" src="{{ article.picture_link }}">
+                <img class="media-object" src="{{ article.picture_link }}">
             </a>
-          </div>
-          <div class="media-body">
-              <h4 class="article_title"><a href="{{ article.article_link }}">{{ article.article_title }}</a></h4>
-              <div class="article_desc"><a href="{{ article.article_link }}">{{ article.article_desc }}</a></div>
-              <div class="article_info">{{ article.article_date | strftime }}&nbsp;&nbsp;|&nbsp;&nbsp;From:
-                  <a href="{{ article.article_link }}">{{ article.article_source }}</a>
-              </div>
-          </div>
+        </div>
+        <div class="media-body">
+            <h4 class="article_title"><a
+                    href="{{ article.article_link }}">{{ article.article_title | format_title }}</a></h4>
+            <div class="article_info">
+                <a class="article_date">{{ article.article_date | short_strftime }}</a>
+                <a class="article_source" href="{{ article.article_link }}">{{ article.article_source }}</a>
+            </div>
+        </div>
     </div>
 {% endfor %}
