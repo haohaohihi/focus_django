@@ -134,10 +134,16 @@ a#active-tech{
     text-decoration: none;
 }
 
-#user .dropdown-menu {
-    left: -140%;
+#user.hidden-xs .dropdown-menu {
     position: absolute;
-    margin-top: 0;
+    margin-top: 0px;
+    padding-right: 0px;
+    margin-right: 0px;
+    border-right: 0px;
+}
+#user.visible-xs .dropdown-menu {
+    position: absolute;
+    margin-top: 5%;
     padding-right: 0px;
     margin-right: 0px;
     border-right: 0px;

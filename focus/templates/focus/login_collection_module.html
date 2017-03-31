@@ -1,6 +1,7 @@
 {% if request.user.is_authenticated %}
-    <div class="glyphicon glyphicon-user dropdown" id="dropdownMenu02"
+    <div class="dropdown" id="dropdownMenu02"
          aria-hidden="true" aria-expanded="true">
+        <p class="glyphicon glyphicon-user"></p>
         <a class="dropdown-toggle" data-toggle="dropdown" href="#">{{ request.user.username }}
             <span class="caret"></span></a>
         <ul class="dropdown-menu" aria-labelledby="dropdownMenu02">
