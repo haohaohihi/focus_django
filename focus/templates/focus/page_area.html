@@ -4,9 +4,32 @@
             <a class="page_num" href="" >{{page}}</a>
             <a href="{% url 'news_page' next_page %}">下一页</a>
         {% elif category == "development" %}
-            <a href="{% url 'dev' pre_page %}">上一页</a>
-            <a class="page_num" href="" >{{page}}</a>
-            <a href="{% url 'dev' next_page %}">下一页</a>
+            {% if sub_category == "python" %}
+                <a href="{% url 'dev_python_page' pre_page %}">上一页</a>
+                <a class="page_num" href="" >{{page}}</a>
+                <a href="{% url 'dev_python_page' next_page %}">下一页</a>
+            {% elif sub_category == "android" %}
+                <a href="{% url 'dev_android_page' pre_page %}">上一页</a>
+                <a class="page_num" href="" >{{page}}</a>
+                <a href="{% url 'dev_android_page' next_page %}">下一页</a>
+            {% elif sub_category == "web" %}
+                <a href="{% url 'dev_web_page' pre_page %}">上一页</a>
+                <a class="page_num" href="" >{{page}}</a>
+                <a href="{% url 'dev_web_page' next_page %}">下一页</a>
+            {% elif sub_category == "linux" %}
+                <a href="{% url 'dev_linux_page' pre_page %}">上一页</a>
+                <a class="page_num" href="" >{{page}}</a>
+                <a href="{% url 'dev_linux_page' next_page %}">下一页</a>
+            {% elif sub_category == "db" %}
+                <a href="{% url 'dev_db_page' pre_page %}">上一页</a>
+                <a class="page_num" href="" >{{page}}</a>
+                <a href="{% url 'dev_db_page' next_page %}">下一页</a>
+            {% else %}
+                <a href="{% url 'dev' pre_page %}">上一页</a>
+                <a class="page_num" href="" >{{page}}</a>
+                <a href="{% url 'dev' next_page %}">下一页</a>
+            {% endif %}
+
         {% elif category == "products" %}
             <a href="{% url 'products_page' pre_page %}">上一页</a>
             <a class="page_num" href="" >{{page}}</a>
