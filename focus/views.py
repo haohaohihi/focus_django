@@ -1,9 +1,10 @@
+import json
 import logging
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib.auth.models import User
 from django.views.decorators.csrf import csrf_exempt
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 from django.core.paginator import Paginator
 from .models import ArticleModel
 # Create your views here.
@@ -79,6 +80,26 @@ def register(request):
     email = request.POST.get("email")
     password = request.POST.get("password")
     confirm_password = request.POST.get("confirm-password")
+    if password != confirm_password:
+        result = {
+            'status': 1,
+            'message': '密码不一致'
+        }
+        return HttpResponse(json.dumps(result))
+    if '@' not in email:
+        result = {
+            'status': 2,
+            'message': '邮箱格式错误'
+        }
+        return HttpResponse(json.dumps(result))
     user = User.objects.create_user(username=username, email=email, password=password)
-    return HttpResponseRedirect('/')
+    result = {
+        'status': 0,
+        'message': '注册成功，请登陆'
+    }
+    return HttpResponse(json.dumps(result))
 
+@csrf_exempt
+def do_logout(request):
+    logout(request)
+    return HttpResponseRedirect('/')
