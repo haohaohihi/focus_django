@@ -1,9 +1,9 @@
 from django.db import models
-
+from django.contrib.auth.models import User
 # Create your models here.
 
 
-class ArticleModel(models.Model):
+class Article(models.Model):
     article_title = models.CharField(max_length=200)
     article_desc = models.CharField(max_length=1000, null=True, default='')
     article_link = models.URLField()
@@ -15,3 +15,14 @@ class ArticleModel(models.Model):
 
     class Meta:
         db_table = 'article'
+
+
+class UserCollection(models.Model):
+    user = models.ForeignKey(User)
+    article = models.ForeignKey(Article)
+    valid = models.BooleanField(default="False")
+    add_time = models.IntegerField()
+    last_change_time = models.IntegerField()
+
+    class Meta:
+        db_table = 'user_collection'

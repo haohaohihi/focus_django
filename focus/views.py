@@ -6,14 +6,14 @@ from django.contrib.auth.models import User
 from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth import authenticate, login, logout
 from django.core.paginator import Paginator
-from .models import ArticleModel
+from .models import Article
 # Create your views here.
 
 logger = logging.getLogger("focus")
 
 
 def index(request):
-    articles = ArticleModel.objects.filter(article_category="news").order_by('-article_date')
+    articles = Article.objects.filter(article_category="news").order_by('-article_date')
     paginator = Paginator(articles, 10)
     page = 1
     page_dict = {
@@ -30,10 +30,10 @@ def index(request):
 def get_page(request, page=1, category="news", sub_category=""):
     logger.info("category: %s; page: %s; sub_category: %s" % (category, page, sub_category))
     if sub_category != "":
-        articles = ArticleModel.objects.filter(article_category=category,
+        articles = Article.objects.filter(article_category=category,
                                            article_sub_category=sub_category).order_by('-article_date')
     else:
-        articles = ArticleModel.objects.filter(article_category=category).order_by('-article_date')
+        articles = Article.objects.filter(article_category=category).order_by('-article_date')
     logger.info("articles num: %s" % len(articles))
     paginator = Paginator(articles, 10)
     page = int(page)
