@@ -26,3 +26,4 @@ class UserCollection(models.Model):
 
     class Meta:
         db_table = 'user_collection'
+        unique_together = (('user', 'article'),)
