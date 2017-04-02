@@ -23,4 +23,5 @@ urlpatterns = [
     url('^login$', views.do_login, name='login'),
     url('^register', views.register, name='register'),
     url('^logout', views.do_logout, name='logout'),
+    url('^collect$', views.change_article_collection, name='collect'),
 ]

@@ -1,12 +1,14 @@
 import json
+import time
 import logging
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib.auth.models import User
 from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required
 from django.core.paginator import Paginator
-from .models import Article
+from .models import Article, UserCollection
 # Create your views here.
 
 logger = logging.getLogger("focus")
@@ -66,8 +68,6 @@ def login_page(request):
 def do_login(request):
     username = str(request.POST.get("username"))
     password = str(request.POST.get("password"))
-    logger.info("username: %s" % username)
-    logger.info("password: %s" % password)
     user = authenticate(username=username, password=password)
     if user is not None:
         login(request, user)
@@ -103,3 +103,46 @@ def register(request):
 def do_logout(request):
     logout(request)
     return HttpResponseRedirect('/')
+
+
+@login_required(login_url='/login_page/')
+@csrf_exempt
+def change_article_collection(request):
+    try:
+        user_id = request.user.id
+        article_id = request.POST.get("article_id")
+        valid = request.POST.get("valid", False)
+    except Exception as e:
+        logger.error(e)
+        result = {
+            'status': -1,
+            'message': "参数错误"
+        }
+        return HttpResponse(json.dumps(result))
+
+    try:
+        user = User.objects.get(id=user_id)
+        article = Article.objects.get(id=article_id)
+    except Exception as e:
+        logger.error(e)
+        result = {
+            'status': -2,
+            'message': "未查询到用户或文章信息"
+        }
+        return HttpResponse(json.dumps(result))
+
+    time_now = int(time.time())
+    try:
+        collection = UserCollection.objects.get(user=user, article=article)
+        collection.valid = valid
+        collection.last_change_time = time_now
+        collection.save()
+    except Exception as e:
+        collection = UserCollection.objects.create(user=user, article=article, valid=valid,
+                                                   add_time=time_now, last_change_time=time_now)
+        logger.info("create a new collection, id is: %s" % collection.id)
+    result = {
+        'status': 0,
+        'message': "收藏或取消收藏成功"
+    }
+    return HttpResponse(json.dumps(result))
