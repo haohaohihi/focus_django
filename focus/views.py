@@ -68,18 +68,43 @@ def login_page(request):
 def do_login(request):
     username = str(request.POST.get("username"))
     password = str(request.POST.get("password"))
+    logger.debug("username: %s" % username)
+    logger.debug("password: %s" % password)
     user = authenticate(username=username, password=password)
     if user is not None:
         login(request, user)
-        return HttpResponseRedirect('/')
+        logger.info("login success")
+        result = {
+            'status': 0,
+            'message': '登陆成功！'
+        }
+    else:
+        logger.info("login fail")
+        result = {
+            'status': 3,
+            'message': '密码错误！'
+        }
+    return HttpResponse(json.dumps(result))
 
 
 @csrf_exempt
-def register(request):
+def do_register(request):
     username = request.POST.get("username")
     email = request.POST.get("email")
     password = request.POST.get("password")
-    confirm_password = request.POST.get("confirm-password")
+    confirm_password = request.POST.get("confirm_password")
+    if User.objects.filter(username=username):
+        result = {
+            'status': 1,
+            'message': '用户名已被注册'
+        }
+        return HttpResponse(json.dumps(result))
+    if User.objects.filter(email=email):
+        result = {
+            'status': 1,
+            'message': '邮箱已被注册'
+        }
+        return HttpResponse(json.dumps(result))
     if password != confirm_password:
         result = {
             'status': 1,

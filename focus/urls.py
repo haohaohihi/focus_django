@@ -21,7 +21,7 @@ urlpatterns = [
         name='dev_android_page'),
     url('^login_page', views.login_page, name='login_page'),
     url('^login$', views.do_login, name='login'),
-    url('^register', views.register, name='register'),
+    url('^register', views.do_register, name='register'),
     url('^logout', views.do_logout, name='logout'),
     url('^collect$', views.change_article_collection, name='collect'),
 ]
