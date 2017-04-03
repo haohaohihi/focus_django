@@ -25,3 +25,10 @@ $(document).ready(function(){
     );
 
 });
+
+
+var collect_article = document.getElementsByClassName("collect_article")
+
+function collectArticle(){
+
+}

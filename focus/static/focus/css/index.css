@@ -194,22 +194,57 @@ a#active-tech{
     font-size: 15px;
 }
 .media.hidden-xs .media-body .article_info{
+    display: inline;
     position: absolute;
     bottom: 0.2%;
 }
 
-.media.hidden-xs .media-body .article_info .article_date,.static_from{
+.media.hidden-xs .media-body .article_info .article_date{
     text-decoration: none;
     color: #333333;
     font-weight: 500;
 }
 
+.media.hidden-xs .media-body .article_info .static_from{
+    text-decoration: none;
+    color: #333333;
+    font-weight: 500;
+    margin-left: 20%;
+}
+
 .media.hidden-xs .media-body .article_info .article_source{
     text-decoration: none;
     color: #2e6da4;
-    font-weight: 500;
+    font-weight: 600;
 }
 
+.media.hidden-xs .collect_article{
+    margin-left: 20%;
+    display: inline;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    color: grey;
+    cursor: default;
+}
+
+
+.media.hidden-xs .collect_star{
+    position: relative;
+    display: inline;
+    width: 3.5%;
+    height: 3.5%;
+    margin-right: 0%;
+    margin-bottom: -0.7%;
+}
+
+.media.hidden-xs .collect_star path{
+    fill: grey;
+    stroke: grey;
+}
 
 .media.visible-xs{
     position: relative;
@@ -230,6 +265,7 @@ a#active-tech{
 
 .media.visible-xs .media-body .article_info{
     position: absolute;
+    display: inline;
     bottom: 8%;
 }
 
@@ -237,10 +273,30 @@ a#active-tech{
     text-decoration: none;
     color: #333333;
     font-weight: 500;
-    margin-right: 8px;
+}
+
+.media.visible-xs .media-body .article_info .article_source{
+    text-decoration: none;
+    display: inline;
+    font-weight: 500;
+    margin-left: 20%;
 }
 
 
+.media.visible-xs .media-body .article_info .collect_article{
+    display: inline;
+    position: relative;
+    max-width: 200px;
+    float: right;
+    margin-left: 20%;
+    margin-right: 5%;
+    width: 9%;
+    height: 8%;
+}
+.media.visible-xs .media-body .article_info .collect_article path{
+    fill: grey;
+    stroke: grey;
+}
 
 .content_area .page_area {
     margin-top: 20px;

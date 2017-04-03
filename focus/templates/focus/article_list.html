@@ -1,3 +1,4 @@
+{% load static %}
 {% load focus_extra %}
 {% for article in articles %}
     <div class="media hidden-xs">
@@ -12,8 +13,15 @@
             </div>
             <div class="article_info">
                 <a class="article_date">{{ article.article_date | strftime }}</a>
-                <a class="static_from"> | From:</a>
+                <a class="static_from">From:</a>
                 <a class="article_source" href="{{ article.article_link }}">{{ article.article_source }}</a>
+                <div class="collect_article" onclick="collectArticle()">收藏
+                    <svg class="collect_star" xmlns="http://www.w3.org/2000/svg"
+                         viewBox="0 0 51 48">
+                        <path d="m25,1 6,17h18l-14,11 5,17-15-10-15,10 5-17-14-11h18z"/>
+                    </svg>
+                </div>
+
             </div>
         </div>
     </div>
@@ -30,6 +38,9 @@
             <div class="article_info">
                 <a class="article_date">{{ article.article_date | short_strftime }}</a>
                 <a class="article_source" href="{{ article.article_link }}">{{ article.article_source }}</a>
+                <svg class="collect_article" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 51 48" onclick="collectArticle()">
+                    <path d="m25,1 6,17h18l-14,11 5,17-15-10-15,10 5-17-14-11h18z"/>
+                </svg>
             </div>
         </div>
     </div>
