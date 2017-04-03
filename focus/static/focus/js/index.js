@@ -18,7 +18,7 @@ $(document).ready(function () {
 
 
 function collectArticle(article_id) {
-    if (sessionStorage.getItem("status") == null)
+    if (sessionStorage.getItem("status") === null)
         alert("请登陆后进行收藏");
     else {
         var l_star = document.getElementById("l" + article_id);
@@ -63,5 +63,8 @@ function collectArticle(article_id) {
                 });
         }
     }
+}
 
+function doLogout() {
+    sessionStorage.removeItem('status');
 }
