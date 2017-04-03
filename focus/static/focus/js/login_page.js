@@ -29,6 +29,7 @@ function doLogIn(){
         username: login_username.value,
         password: login_password.value
     }, function(result){
+        sessionStorage.setItem('status', login_username.value);
         var result_json = JSON.parse(result);
         console.log(result_json.status);
         if (result_json.status === 0){

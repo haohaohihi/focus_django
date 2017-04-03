@@ -15,10 +15,14 @@
                 <a class="article_date">{{ article.article_date | strftime }}</a>
                 <a class="static_from">From:</a>
                 <a class="article_source" href="{{ article.article_link }}">{{ article.article_source }}</a>
-                <div class="collect_article" onclick="collectArticle()">收藏
+                <div class="collect_article" onclick="collectArticle({{ article.id }})">收藏
                     <svg class="collect_star" xmlns="http://www.w3.org/2000/svg"
                          viewBox="0 0 51 48">
-                        <path d="m25,1 6,17h18l-14,11 5,17-15-10-15,10 5-17-14-11h18z"/>
+                        {% if article.id in collections_article_id %}
+                        <path id=l{{ article.id }} valid=1 fill="yellow" stroke="grey" d="m25,1 6,17h18l-14,11 5,17-15-10-15,10 5-17-14-11h18z"/>
+                        {% else %}
+                        <path id=l{{ article.id }} valid=0 fill="grey" stroke="grey" d="m25,1 6,17h18l-14,11 5,17-15-10-15,10 5-17-14-11h18z"/>
+                        {% endif %}
                     </svg>
                 </div>
 
@@ -38,8 +42,12 @@
             <div class="article_info">
                 <a class="article_date">{{ article.article_date | short_strftime }}</a>
                 <a class="article_source" href="{{ article.article_link }}">{{ article.article_source }}</a>
-                <svg class="collect_article" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 51 48" onclick="collectArticle()">
-                    <path d="m25,1 6,17h18l-14,11 5,17-15-10-15,10 5-17-14-11h18z"/>
+                <svg class="collect_article" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 51 48" onclick="collectArticle({{ article.id }})">
+                    {% if article.id in collections_article_id %}
+                        <path id=s{{ article.id }} valid=1 fill="yellow" stroke="grey" d="m25,1 6,17h18l-14,11 5,17-15-10-15,10 5-17-14-11h18z"/>
+                        {% else %}
+                        <path id=s{{ article.id }} valid=0 fill="grey" stroke="grey" d="m25,1 6,17h18l-14,11 5,17-15-10-15,10 5-17-14-11h18z"/>
+                        {% endif %}
                 </svg>
             </div>
         </div>

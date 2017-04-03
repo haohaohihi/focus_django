@@ -241,11 +241,6 @@ a#active-tech{
     margin-bottom: -0.7%;
 }
 
-.media.hidden-xs .collect_star path{
-    fill: grey;
-    stroke: grey;
-}
-
 .media.visible-xs{
     position: relative;
     margin: 0.2% auto;
@@ -292,10 +287,6 @@ a#active-tech{
     margin-right: 5%;
     width: 9%;
     height: 8%;
-}
-.media.visible-xs .media-body .article_info .collect_article path{
-    fill: grey;
-    stroke: grey;
 }
 
 .content_area .page_area {

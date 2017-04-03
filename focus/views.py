@@ -15,25 +15,31 @@ logger = logging.getLogger("focus")
 
 
 def index(request):
+    user_id = request.user.id
     articles = Article.objects.filter(article_category="news").order_by('-article_date')
     paginator = Paginator(articles, 10)
     page = 1
     page_dict = {
-
         'articles': paginator.page(1),
         'pre_page': page,
         'next_page': page + 1,
         'page': page,
         'pages': paginator.num_pages,
     }
+    if user_id:
+        collections = UserCollection.objects.filter(user_id=user_id, valid=1)
+        collections_article_id = [c.article.id for c in collections]
+        page_dict['collections_article_id'] = collections_article_id
+        logger.info("collections: %s" % collections_article_id)
     return render(request, 'focus/index.html', page_dict)
 
 
 def get_page(request, page=1, category="news", sub_category=""):
+    user_id = request.user.id
     logger.info("category: %s; page: %s; sub_category: %s" % (category, page, sub_category))
     if sub_category != "":
         articles = Article.objects.filter(article_category=category,
-                                           article_sub_category=sub_category).order_by('-article_date')
+                                          article_sub_category=sub_category).order_by('-article_date')
     else:
         articles = Article.objects.filter(article_category=category).order_by('-article_date')
     logger.info("articles num: %s" % len(articles))
@@ -57,6 +63,11 @@ def get_page(request, page=1, category="news", sub_category=""):
         'category': category,
         'sub_category': sub_category,
     }
+    if user_id:
+        collections = UserCollection.objects.filter(user_id=user_id, valid=1)
+        collections_article_id = [c.article.id for c in collections]
+        page_dict['collections_article_id'] = collections_article_id
+
     return render(request, 'focus/index.html'.format(category), page_dict)
 
 
@@ -132,11 +143,13 @@ def do_logout(request):
 
 @login_required(login_url='/login_page/')
 @csrf_exempt
-def change_article_collection(request):
+def add_or_cancel_collection(request):
     try:
         user_id = request.user.id
         article_id = request.POST.get("article_id")
-        valid = request.POST.get("valid", False)
+        valid = int(request.POST.get("valid", 0))
+        logger.info("user_id:{0}\narticle_id:{1}\nvalid:{2}".format(
+            user_id, article_id, valid))
     except Exception as e:
         logger.error(e)
         result = {

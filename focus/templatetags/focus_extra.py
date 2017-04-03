@@ -9,13 +9,14 @@ register = template.Library()
 def strftime(var):
     return datetime.datetime.fromtimestamp(var).strftime('%Y-%m-%d')
 
+
 def short_strftime(var):
     this_year = str(datetime.datetime.now().year)
     if datetime.datetime.fromtimestamp(var).strftime('%Y') == this_year:
-        logger.debug("success")
         return datetime.datetime.fromtimestamp(var).strftime('%m-%d')
     else:
         return datetime.datetime.fromtimestamp(var).strftime('%Y-%m-%d')
+
 
 def format_title(var):
     if len(var) >= 40:
