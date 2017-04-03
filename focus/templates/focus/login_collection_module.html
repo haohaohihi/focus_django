@@ -6,7 +6,7 @@
             <span class="caret"></span></a>
         <ul class="dropdown-menu" aria-labelledby="dropdownMenu02">
             <li>
-                <a href="#">我的收藏</a></li>
+                <a href="{% url 'my_collections' '1' %}">我的收藏</a></li>
             <li>
                 <a href="{% url 'logout' %}" onclick='doLogout()'>登出</a></li>
         </ul>

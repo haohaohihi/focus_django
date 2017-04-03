@@ -68,7 +68,7 @@ def get_page(request, page=1, category="news", sub_category=""):
         collections_article_id = [c.article.id for c in collections]
         page_dict['collections_article_id'] = collections_article_id
 
-    return render(request, 'focus/index.html'.format(category), page_dict)
+    return render(request, 'focus/index.html', page_dict)
 
 
 def login_page(request):
@@ -184,3 +184,41 @@ def add_or_cancel_collection(request):
         'message': "收藏或取消收藏成功"
     }
     return HttpResponse(json.dumps(result))
+
+
+@login_required(login_url='/login_page/')
+def my_collections(request, page=1):
+    user_id = request.user.id
+    if not user_id:
+        return HttpResponseRedirect('/login_page')
+    try:
+        user = User.objects.get(id=user_id)
+    except Exception as e:
+        logger.error(e)
+        return HttpResponseRedirect('/login_page')
+    collections = UserCollection.objects.filter(user=user, valid=1)
+    collections_article_id = [c.article.id for c in collections]
+    articles = Article.objects.filter(id__in=collections_article_id)
+
+    paginator = Paginator(articles, 10)
+    page = int(page)
+    if page == 1:
+        pre_page = page
+        next_page = page + 1
+    elif page == paginator.num_pages:
+        pre_page = page - 1
+        next_page = paginator.num_pages
+    else:
+        pre_page = page - 1
+        next_page = page + 1
+    page_dict = {
+        'articles': paginator.page(page),
+        'pre_page': pre_page,
+        'next_page': next_page,
+        'page': page,
+        'pages': paginator.num_pages,
+        'category': "collections",
+        'sub_category': "collections",
+        'collections_article_id': collections_article_id
+    }
+    return render(request, 'focus/index.html', page_dict)

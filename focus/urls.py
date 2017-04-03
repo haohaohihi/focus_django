@@ -19,9 +19,10 @@ urlpatterns = [
         name='dev_db_page'),
     url('^dev/android/(?P<page>\d+)', views.get_page, {'category': 'development', 'sub_category': 'android'},
         name='dev_android_page'),
-    url('^login_page', views.login_page, name='login_page'),
+    url('^login_page$', views.login_page, name='login_page'),
     url('^login$', views.do_login, name='login'),
-    url('^register', views.do_register, name='register'),
-    url('^logout', views.do_logout, name='logout'),
+    url('^register$', views.do_register, name='register'),
+    url('^logout$', views.do_logout, name='logout'),
     url('^add_or_cancel_collection$', views.add_or_cancel_collection, name='add_or_cancel_collection'),
+    url('^my_collections/(?P<page>\d+)', views.my_collections, name='my_collections'),
 ]
