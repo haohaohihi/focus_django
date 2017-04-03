@@ -86,6 +86,7 @@
     /*font-weight: 800;*/
     margin: 8px auto;
 }
+
 .navbar-header .navbar-brand.hidden-xs {
     position: relative;
     margin-left: 0px;
@@ -117,7 +118,7 @@ a#active-tech{
     display: inline;
     float: right;
     padding: 6px 14px;
-    margin: 10px auto;
+    margin-top: 8px;
     background-color: transparent;
 }
 
@@ -141,12 +142,11 @@ a#active-tech{
     margin-right: 0px;
     border-right: 0px;
 }
+
 #user.visible-xs .dropdown-menu {
     position: absolute;
-    margin-top: 5%;
-    padding-right: 0px;
-    margin-right: 0px;
-    border-right: 0px;
+    margin-top: 8%;
+    left: -56%;
 }
 
 #user .dropdown-menu a{
