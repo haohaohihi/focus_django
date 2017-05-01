@@ -45,6 +45,12 @@
     color: #FFF;
 }
 
+.container{
+    width: 90%;
+    margin-left: 4%;
+    margin-right: 0px;
+}
+
 .navbar-brand img {
     margin-top: 0px;
     margin-left: 0px;
@@ -108,6 +114,15 @@
     font-weight: 700;
 }
 
+.navbar-form[role='search']{
+    position: relative;
+    displsy: inline;
+    float: left;
+    padding-right: 0;
+    margin-right: 0px;
+    width: 20%
+}
+
 a#active-tech{
     background-color: rgb(231, 231, 231);
     box-shadow: inset 0 3px 9px rgba(0,0,0,.075);
@@ -117,7 +132,7 @@ a#active-tech{
     position: relative;
     display: inline;
     float: right;
-    padding: 6px 14px;
+    padding: 6px 0px;
     margin-top: 8px;
     background-color: transparent;
 }

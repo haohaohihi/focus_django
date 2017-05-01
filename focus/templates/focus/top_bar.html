@@ -22,7 +22,7 @@
             <a class="navbar-brand hidden-xs" href="{% url 'index' %}"><img height="50px"
                                                                             src="{% static 'focus/img/focus.cn.png' %}"></a>
             <div class="visible-xs" id="user">
-            {% include 'focus/login_collection_module.html' %}
+                {% include 'focus/login_collection_module.html' %}
             </div>
         </div>
 
@@ -33,8 +33,19 @@
             <ul class="nav navbar-nav">
                 {% include 'focus/catalog_list.html' %}
             </ul>
+
+            <form class="navbar-form" role="search">
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Search" name="q">
+                    <div class="input-group-btn">
+                        <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i>
+                        </button>
+                    </div>
+                </div>
+            </form>
+
             <div class="hidden-xs" id="user">
-            {% include 'focus/login_collection_module.html' %}
+                {% include 'focus/login_collection_module.html' %}
             </div>
         </div><!--/.nav-collapse -->
 
