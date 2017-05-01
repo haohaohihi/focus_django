@@ -8,11 +8,13 @@
   <title>Focus</title>
     <link href="{% static 'focus/css/bootstrap-theme.min.css'%}" rel="stylesheet">
     <link href="{% static 'focus/css/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'focus/css/index.css' %}" rel="stylesheet">
     <link href="{% static 'focus/css/login_page.css'%}" rel="stylesheet">
     <link rel="shortcut icon" type="image/png" href="{% static 'focus/img/favicon.ico' %}"/>
 </head>
 <body>
-<div class="container">
+{% include 'focus/top_bar.html' %}
+<div class="container login">
     	<div class="row">
 			<div class="col-md-6 col-md-offset-3">
 				<div class="panel panel-login">
@@ -88,5 +90,6 @@
 <script src="{% static 'focus/js/jquery-3.1.1.min.js' %}"></script>
 <script src="{% static 'focus/js/bootstrap.min.js' %}"></script>
 <script src="{% static 'focus/js/login_page.js' %}"></script>
+<script src="{% static 'focus/js/index.js' %}"></script>
 </body>
 </html>
