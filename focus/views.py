@@ -222,3 +222,25 @@ def my_collections(request, page=1):
         'collections_article_id': collections_article_id
     }
     return render(request, 'focus/index.html', page_dict)
+
+
+def do_search(request):
+    user_id = request.user.id
+    q_string = str(request.GET.get(('q'), ''))
+    articles = Article.objects.filter(article_title__contains=q_string).order_by('-article_date')
+    paginator = Paginator(articles, 10)
+    page = 1
+    page_dict = {
+        'articles': paginator.page(1),
+        'pre_page': page,
+        'next_page': page + 1,
+        'page': page,
+        'pages': paginator.num_pages,
+        'category': 'search'
+    }
+    if user_id:
+        collections = UserCollection.objects.filter(user_id=user_id, valid=1)
+        collections_article_id = [c.article.id for c in collections]
+        page_dict['collections_article_id'] = collections_article_id
+        logger.info("collections: %s" % collections_article_id)
+    return render(request, 'focus/index.html', page_dict)

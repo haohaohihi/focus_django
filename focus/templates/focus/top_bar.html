@@ -34,7 +34,7 @@
                 {% include 'focus/catalog_list.html' %}
             </ul>
 
-            <form class="navbar-form" role="search">
+            <form class="navbar-form" role="search" action={% url 'do_search' %}>
                 <div class="input-group">
                     <input type="text" class="form-control" placeholder="Search" name="q">
                     <div class="input-group-btn">

@@ -25,4 +25,5 @@ urlpatterns = [
     url('^logout$', views.do_logout, name='logout'),
     url('^add_or_cancel_collection$', views.add_or_cancel_collection, name='add_or_cancel_collection'),
     url('^my_collections/(?P<page>\d+)', views.my_collections, name='my_collections'),
+    url('^do_search', views.do_search, name="do_search"),
 ]
