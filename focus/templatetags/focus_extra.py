@@ -24,6 +24,13 @@ def format_title(var):
     else:
         return var
 
+def format_desc(var):
+    if len(var) >= 150:
+        return var[0:150] + "..."
+    else:
+        return var
+
 register.filter('strftime', strftime)
 register.filter('short_strftime', short_strftime)
 register.filter('format_title', format_title)
+register.filter('format_desc', format_desc)
