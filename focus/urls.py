@@ -26,4 +26,5 @@ urlpatterns = [
     url('^add_or_cancel_collection$', views.add_or_cancel_collection, name='add_or_cancel_collection'),
     url('^my_collections/(?P<page>\d+)', views.my_collections, name='my_collections'),
     url('^do_search', views.do_search, name="do_search"),
+    url('^search/(?P<page>\d+)/(?P<q_string>\w+)', views.search, name="search"),
 ]

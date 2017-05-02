@@ -228,19 +228,56 @@ def do_search(request):
     user_id = request.user.id
     q_string = str(request.GET.get(('q'), ''))
     articles = Article.objects.filter(article_title__contains=q_string).order_by('-article_date')
+    logger.info("Search %s , has %d results" % (q_string, len(articles)))
     paginator = Paginator(articles, 10)
     page = 1
+    next_page = page + 1
+    pre_page = page - 1
     page_dict = {
-        'articles': paginator.page(1),
-        'pre_page': page,
-        'next_page': page + 1,
+        'articles': paginator.page(page),
+        'pre_page': pre_page,
+        'next_page': next_page,
         'page': page,
         'pages': paginator.num_pages,
-        'category': 'search'
+        'category': "search",
+        'search_string': q_string
     }
     if user_id:
         collections = UserCollection.objects.filter(user_id=user_id, valid=1)
         collections_article_id = [c.article.id for c in collections]
         page_dict['collections_article_id'] = collections_article_id
-        logger.info("collections: %s" % collections_article_id)
+    return render(request, 'focus/index.html', page_dict)
+
+
+def search(request, page=1, q_string=""):
+    user_id = request.user.id
+    logger.info(page, q_string)
+    articles = Article.objects.filter(article_title__contains=q_string).order_by('-article_date')
+    logger.info("Search %s , has %d results" % (q_string, len(articles)))
+
+    paginator = Paginator(articles, 10)
+    page = int(page)
+    if page == 1:
+        pre_page = page
+        next_page = page + 1
+    elif page == paginator.num_pages:
+        pre_page = page - 1
+        next_page = paginator.num_pages
+    else:
+        pre_page = page - 1
+        next_page = page + 1
+    page_dict = {
+        'articles': paginator.page(page),
+        'pre_page': pre_page,
+        'next_page': next_page,
+        'page': page,
+        'pages': paginator.num_pages,
+        'category': "search",
+        'search_string': q_string
+    }
+    if user_id:
+        collections = UserCollection.objects.filter(user_id=user_id, valid=1)
+        collections_article_id = [c.article.id for c in collections]
+        page_dict['collections_article_id'] = collections_article_id
+
     return render(request, 'focus/index.html', page_dict)

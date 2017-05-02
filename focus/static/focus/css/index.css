@@ -45,11 +45,6 @@
     color: #FFF;
 }
 
-.container{
-    width: 90%;
-    margin-left: 4%;
-    margin-right: 0px;
-}
 
 .navbar-brand img {
     margin-top: 0px;
@@ -118,9 +113,12 @@
     position: relative;
     displsy: inline;
     float: left;
-    padding-right: 0;
+    padding: 0;
     margin-right: 0px;
+    margin-left: 0px;
     width: 200px;
+    border: 0px;
+
 }
 
 a#active-tech{
@@ -132,7 +130,7 @@ a#active-tech{
     position: relative;
     display: inline;
     float: right;
-    padding: 6px 0px;
+    padding: 6px 14px;
     margin-top: 8px;
     background-color: transparent;
 }
