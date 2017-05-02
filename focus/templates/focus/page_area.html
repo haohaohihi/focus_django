@@ -45,7 +45,7 @@
         {% elif category == "collections" %}
             <a href="{% url 'my_collections' pre_page %}">上一页</a>
             <a class="page_num" href="" >{{page}}</a>
-            <a href="{% url 'my_cogllections' next_page %}">下一页</a>
+            <a href="{% url 'my_collections' next_page %}">下一页</a>
         {% elif category == "search" %}
             <a href="{% url 'search' pre_page search_string%}">上一页</a>
             <a class="page_num" href="" >{{page}}</a>
